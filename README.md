@@ -12,13 +12,15 @@ Programs based on principles of Data Science:
 8. Text Mining
 9. Visualization, Graphics and Dashboards
 
-All programs are based on R, Python, SQL, MongoDB.
+All programs were criated by me and based on R, Python, SQL, MongoDB.
 
 The majority of these programs were built during watching the AMAZING classes from:
 
 Formação Cientista de Dados com R e Python (Udemy): https://www.udemy.com/share/101XysAkUZdFdWRnw=/
 
 Instructors: Fernando Amaral and Jonas Granatyr: https://www.udemy.com/course/cientista-de-dados/#instructor-1
+
+My LinkedIn: https://www.linkedin.com/in/lucaslimapinho/
 
 
 
