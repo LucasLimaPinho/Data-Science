@@ -54,3 +54,16 @@ import matplotlib.pyplot as plt
 data = norm.rvs(size=100) #generate alleatory data in normal distribution
 stats.probplot(data,plot = plt)
 stats.shapiro(data)
+
+# T-Student Distribution
+
+from scipy.stats import t
+
+# medium wage of data scientist being R$ 75 / hour,
+# whats the probabilty of the wage being < 80 / hour?
+# sample size = 9
+# degrees of freedom = sample size - 1 = 8
+# sd for the sample = 10
+
+t.cdf(1.5, 8)
+t.sf(1.5,8)
