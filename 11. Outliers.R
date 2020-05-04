@@ -1,6 +1,6 @@
 #OUTLIERS
 
-# boxplot -> visualização
+# boxplot -> visualizaÃ§Ã£o
 # boxplot.stats -> numbers
 # Outliers -> package
 
