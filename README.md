@@ -1,4 +1,4 @@
-# Data-Science
+# Machine Learning & Big Data
 
 Programs based on principles of Data Science:
 
