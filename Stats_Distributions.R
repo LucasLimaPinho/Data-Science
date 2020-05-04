@@ -21,3 +21,22 @@ pbinom(2,2,0.5) #find cummulative distribution
  qqline(y) # generates the line
  shapiro.test(y)#normality tst- Shapiro-Wilk
  
+ # T-Student Distribution
+ 
+ # mean R$ 75 / hour
+ # sd sample = 10
+ # sample size = 9
+ # degrees of freedom = sample size -1 = 8
+ # Whats the probability of the the wage being < 80 / hour?
+ 
+ pt(1.5, 8) #1.5 comes from calculating (t) = (x-Uo/(S/sqrt(n)))
+
+ 
+ # Whats the probability of the the wage being > 80 / hour?
+ 
+ pt(1.5, 8, lower.tail = F)
+
+  
+ 
+ 
+ 
