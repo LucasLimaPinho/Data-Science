@@ -1,0 +1,10 @@
+install.packages("arules")
+library(arules)
+library(arulesViz)
+transacoes = read.transactions(file.choose(), format = "basket",sep=",")
+inspect(transacoes)
+image(transacoes)
+#maxlen -> maximum number of itens
+regras = eclat(transacoes, parameter = list(support=0.1, maxlen=15))
+inspect(regras)
+plot(regras,method="graph", control = list(type="items"))
