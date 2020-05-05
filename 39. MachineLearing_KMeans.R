@@ -21,7 +21,7 @@ cluster
 
 table(iris$Species, cluster$cluster)
 # The algorithm is strugling with Verginica. Got it right for Setosas.
-# 16 deviations - 84% of sucess rate.
+# 16 deviations - close to 90% of sucess rate.
 
 plot(iris[,1:4], col = cluster$cluster)
 #Looking the graph, the red in the plot is Setosa (100% of sucess rate)
