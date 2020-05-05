@@ -19,4 +19,4 @@ regras
 inspect(regras)
 plot(regras)
 plot(regras,method="graph",control=list(type="items"))
-# As hogher the support is, the larger is the diameter of the circles
+# As higher the support is, the larger is the diameter of the circles
