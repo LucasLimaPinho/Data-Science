@@ -16,7 +16,7 @@ cluster_02 #We receive the probability of each instancie belonging to a certain 
 #confusion_matrix using TABLE in R
 
 table(iris$Species, cluster_02$cluster)
-#Got wrong in 16 instancies - 84% sucess rate
+#Got wrong in 16 instancies - close to 90% sucess rate
 
 
  
