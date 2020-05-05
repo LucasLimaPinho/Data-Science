@@ -46,3 +46,9 @@ for i in range(len(previsoes)):
         print(previsoes[i][j])
         lista_previsoes.append(i)
         lista_real.append(iris.target[previsoes[i][j]])
+
+ 
+lista_previsoes = np.array(lista_previsoes)
+lista_real = np.array(lista_real)
+
+resultados = confusion_matrix(lista_real, lista_previsoes)
