@@ -13,8 +13,8 @@ cursor.execute(consulta)
 registros = cursor.fetchall() 
 
 for row in registros:
-       print("Nome = ", row[1], )
-       print("Estado = ", row[2])
+       print("Nome = ", row[1], ) #Line 0 is the index and can be jumped
+       print("Estado = ", row[2]) 
        print("Status  = ", row[4], "\n")
 
 cursor.close()
