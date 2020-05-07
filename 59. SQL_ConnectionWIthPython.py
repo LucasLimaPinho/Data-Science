@@ -1,4 +1,4 @@
-#pip install psycopg2
+#pip install psycopg2 on Anaconda prompt
 
 import psycopg2
 
