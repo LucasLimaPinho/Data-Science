@@ -1,7 +1,7 @@
 %% Inicializacao
 
 function [y1 y2]= ESCRAVO_MOEA_01(X,PORCENTAGEM_CURTAILMENT);
-cd ('C:\Users\Francisco\Documents\MESTRADO PPE\DISSERTAÇÃO\Planilhas\PDE 2024\MATLAB');
+cd ('C:\Users\Francisco\Documents\MESTRADO PPE\DISSERTAÃ‡ÃƒO\Planilhas\PDE 2024\MATLAB');
 PORCENTAGEM_CURTAILMENT = 1;
 excDisp = ImportaDados(importdata('Resultados.txt'));
 Eficiencia = 0.7;
@@ -20,17 +20,17 @@ Setembro = excDisp(8*(length(excDisp)/12)+1:9*(length(excDisp)/12));
 Outubro = excDisp(9*(length(excDisp)/12)+1:10*(length(excDisp)/12));
 Novembro = excDisp(10*(length(excDisp)/12)+1:11*(length(excDisp)/12));
 Dezembro = excDisp(11*(length(excDisp)/12)+1:12*(length(excDisp)/12));
-T = length(Janeiro); %Número de períodos (12*24)
-N = 1; % Número de unidades de eletrólise
+T = length(Janeiro); %NÃºmero de perÃ­odos (12*24)
+N = 1; % NÃºmero de unidades de eletrÃ³lise
 RGN = ResHHV';
 RestricoesGasoduto = repmat(RGN(11),1,T);
 
-%%%%%%%%%%%%%%%DEFINIÇÃO DE ALGUNS PARÂMETROS DE CUSTO%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%DEFINIÃ‡ÃƒO DE ALGUNS PARÃ‚METROS DE CUSTO%%%%%%%%%%%%%%%%%%%%%
 
-% % Existem (26*288) restrições de capacidade de produção e armazenamento e (13*288) restrições de injeção
-% Alocando uma matriz esparsa para as restrições de desigualdade. O número
-% de linhas é igual ao número de restrições e o número de colunas igual ao
-% número de variáveis de decisão
+% % Existem (26*288) restriÃ§Ãµes de capacidade de produÃ§Ã£o e armazenamento e (13*288) restriÃ§Ãµes de injeÃ§Ã£o
+% Alocando uma matriz esparsa para as restriÃ§Ãµes de desigualdade. O nÃºmero
+% de linhas Ã© igual ao nÃºmero de restriÃ§Ãµes e o nÃºmero de colunas igual ao
+% nÃºmero de variÃ¡veis de decisÃ£o
 
 capProducao = X(1);
 capProducao = (Eficiencia * capProducao); %Em MWh
@@ -45,16 +45,16 @@ capArmazenamentoRestricao = capArmazenamentoRestricao(:);
 RestricoesGasoduto = RestricoesGasoduto'; %Em MWh
 RestricoesGasoduto = RestricoesGasoduto(:);
 CustoEletricidade = 57; %US$/MWh
-demandaEletrica = 1.42; % MWh de eletricidade / MWh de hidrogênio
+demandaEletrica = 1.42; % MWh de eletricidade / MWh de hidrogÃªnio
 PMOA = 98.1;
-CPU = CustoEletricidade * demandaEletrica; %Custo de Produção Unitário (US$/milhao Nm3)
-CSU = 1000; %Custo de Storage Unitário
-CIU = CustoEletricidade * CompressaoHidrogenio(30,PMOA,1); %Custo de Injeção Unitário
+CPU = CustoEletricidade * demandaEletrica; %Custo de ProduÃ§Ã£o UnitÃ¡rio (US$/milhao Nm3)
+CSU = 1000; %Custo de Storage UnitÃ¡rio
+CIU = CustoEletricidade * CompressaoHidrogenio(30,PMOA,1); %Custo de InjeÃ§Ã£o UnitÃ¡rio
 
-%% Função Objetivo sem utilização de SYMBOLIC MATH TOOLBOX
+%% FunÃ§Ã£o Objetivo sem utilizaÃ§Ã£o de SYMBOLIC MATH TOOLBOX
 %%%%%%%%%%%%%%%%JANEIRO%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Para a produção
+% Para a produÃ§Ã£o
 obj1 = zeros(N,T);
 obj2 = zeros(N,T);
 obj3 = zeros(N,T);
@@ -77,7 +77,7 @@ for ii=1:N
     end
 end
 
-% Para a injeção
+% Para a injeÃ§Ã£o
 for ii=1:N
     for jj=1:T
         obj3(ii,jj) = CIU(ii);
@@ -98,8 +98,8 @@ end
 %     end
 % end
 % 
-% % Variável que modela o Start-up: Transição de um estado off para um estado
-% % on da geração de hidrogênio eletrolítico (Vjk)
+% % VariÃ¡vel que modela o Start-up: TransiÃ§Ã£o de um estado off para um estado
+% % on da geraÃ§Ã£o de hidrogÃªnio eletrolÃ­tico (Vjk)
 % 
 % for ii=1:N
 %     for jj=1:T
@@ -119,12 +119,12 @@ end
 % end
 
 funcaoObjetivo = [obj1(:); obj2(:); obj3(:)];
-%% Restrições de Capacidade de Producao/Armazenamento e de Injeção
+%% RestriÃ§Ãµes de Capacidade de Producao/Armazenamento e de InjeÃ§Ã£o
 
-Aineq = speye(3*T*N,3*T*N); % Restrições de producao, armazenamento e injeção
+Aineq = speye(3*T*N,3*T*N); % RestriÃ§Ãµes de producao, armazenamento e injeÃ§Ã£o
 
-% Parte do código referente à construção da matriz de restrições de
-% desigualdade. A montagem aqui obedece a restrição de SUM(Xn,t - Yt*Cap <=
+% Parte do cÃ³digo referente Ã  construÃ§Ã£o da matriz de restriÃ§Ãµes de
+% desigualdade. A montagem aqui obedece a restriÃ§Ã£o de SUM(Xn,t - Yt*Cap <=
 % 0)
 
 % auxProducaoMaximo = -sparse(diag(capProducaoRestricao,0));
@@ -138,20 +138,20 @@ Aineq = speye(3*T*N,3*T*N); % Restrições de producao, armazenamento e injeção
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Restrições de Capacidade de Producao
+% RestriÃ§Ãµes de Capacidade de Producao
 
 bineq = zeros(3*N*T,1);
 for ii=1:N*T
     bineq(ii,1) = capProducaoRestricao(ii);
 end
 
-% Restrições de Capacidade de Armazenamento
+% RestriÃ§Ãµes de Capacidade de Armazenamento
 
 for ii=(N*T+1):2*N*T
     bineq(ii,1) = capArmazenamentoRestricao(ii - N*T);
 end
 
-% Restrições de Injeção Direta
+% RestriÃ§Ãµes de InjeÃ§Ã£o Direta
 
 for ii=(2*N*T + 1):3*N*T
     bineq(ii,1) = RestricoesGasoduto(ii - 2*N*T);
@@ -163,14 +163,14 @@ end
 % end
 % 
 % 
-% Restricao que impede de a produção ser nula em todos os instantes de
+% Restricao que impede de a produÃ§Ã£o ser nula em todos os instantes de
 % tempo
 
 
 
 % INJETABILIDADE
-% 1 MWh ---> 0,000282596 milhão de Nm3
-% 1 Milhão de m3 ---> 3538,618889 MWh
+% 1 MWh ---> 0,000282596 milhÃ£o de Nm3
+% 1 MilhÃ£o de m3 ---> 3538,618889 MWh
 % Injetabilidade = 0,041680441 * Capacidade de Armazenamento (1/h)
 
 % Injetabilidade = 0.041680441 * capArmazenamentoRestricao;
@@ -185,19 +185,19 @@ end
 % Aineq = sparse([Aineq; auxPUT; auxGET]);
 % % bineq = [bineq; zeros(2*N*T,1)];
 
-%% Determinação das variáveis inteiras e determinação dos limites inferiores e superiores das variáveis
+%% DeterminaÃ§Ã£o das variÃ¡veis inteiras e determinaÃ§Ã£o dos limites inferiores e superiores das variÃ¡veis
 
-% intcon = (3*N*T + 1):(6*N*T); %% As variáveis referentes ao start up cost como inteiras
+% intcon = (3*N*T + 1):(6*N*T); %% As variÃ¡veis referentes ao start up cost como inteiras
 
 lb = zeros(length(funcaoObjetivo),1);
 ub = Inf(length(funcaoObjetivo),1);
 % ub((3*N*T + 1):6*N*T) = 1;
     
-%% Restrições de igualdade
+%% RestriÃ§Ãµes de igualdade
 
 
-% Equações de armazenamento
-% Para 1 possível lugar de localização de planta de eletrólise
+% EquaÃ§Ãµes de armazenamento
+% Para 1 possÃ­vel lugar de localizaÃ§Ã£o de planta de eletrÃ³lise
 
 % Injecao(t) = Producao(t) - PUT(t) + GET(t)
 
@@ -213,7 +213,7 @@ ub = Inf(length(funcaoObjetivo),1);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Link dos PUTS, GETS com as equações de armazenamento (Inventário)
+%Link dos PUTS, GETS com as equaÃ§Ãµes de armazenamento (InventÃ¡rio)
 
 % I(t) - I(t-1) = PUT(t) - GET(t)
 
@@ -238,7 +238,7 @@ ub = Inf(length(funcaoObjetivo),1);
 % beq = zeros(2*N*T,1);
 
 
-% Restrições de condição inicial do armazenamento. 13 restrições, condição
+% RestriÃ§Ãµes de condiÃ§Ã£o inicial do armazenamento. 13 restriÃ§Ãµes, condiÃ§Ã£o
 % inicial setada em 0 para o instante inicial nos 13 locais.
 
 auxStorage1 = zeros(N,1);
@@ -249,10 +249,10 @@ Aeq = sparse([auxStorage2]);
 beq = [auxStorage1];
 
 
-%Inserindo N*T restrições referentes à variáveis inteiras responsáveis
-%pelos custos de startup da planta de eletrólise. Restrições impedem que
-%uma unidade que esteja com estado lógico ON possa se alterar para OFF, mas
-%não possa ser STARTADA. Também o contrário.
+%Inserindo N*T restriÃ§Ãµes referentes Ã  variÃ¡veis inteiras responsÃ¡veis
+%pelos custos de startup da planta de eletrÃ³lise. RestriÃ§Ãµes impedem que
+%uma unidade que esteja com estado lÃ³gico ON possa se alterar para OFF, mas
+%nÃ£o possa ser STARTADA. TambÃ©m o contrÃ¡rio.
 
 % Yjk - Zjk = Vjk - Vjk-1
 
@@ -277,7 +277,7 @@ beq = [auxStorage1];
 % Aeq = sparse([Aeq; aux; aux2]);
 % beq = [beq; zeros(2*N*T,1)];
 
-%%%%%%% EQUAÇÕES DE BALANÇO DO ARMAZENAMENTO
+%%%%%%% EQUAÃ‡Ã•ES DE BALANÃ‡O DO ARMAZENAMENTO
 
 
 aux = spalloc(N*T,3*T*N,4*N*T);
@@ -306,7 +306,7 @@ beq = [beq; min(capProducaoRestricao,Janeiro')];
 clear aux aux2 auxProducaoMaximo auxProducaoMinimo ...
     auxStorage1 auxStorage2 contador auxMaximizacao;
 
-%% OTIMIZAÇÃO JANEIRO
+%% OTIMIZAÃ‡ÃƒO JANEIRO
 
 
 opts = optimoptions('linprog','Display','off');
@@ -368,13 +368,13 @@ end
 % xlim([0 23]);
 % title('Janeiro','FontSize',14);
 % hold off
-% legend('Produção de Hidrogênio','Injeção na Rede de Gás Natural','Armazenamento');
+% legend('ProduÃ§Ã£o de HidrogÃªnio','InjeÃ§Ã£o na Rede de GÃ¡s Natural','Armazenamento');
 
 
 
 %% Fevereiro
 
-% SEMESTRE 02 - SÓ TEM QUE ADICIONAR RESTRIÇÕES NAS CONDIÇÕES INICIAS DE ARMAZENAMENTO
+% SEMESTRE 02 - SÃ“ TEM QUE ADICIONAR RESTRIÃ‡Ã•ES NAS CONDIÃ‡Ã•ES INICIAS DE ARMAZENAMENTO
  
 beq((N*T+2:(N*T)+25),1) = min(capProducaoRestricao,Fevereiro'); 
 [solution, fval_Fevereiro,exitflag_Fevereiro,output] = linprog(funcaoObjetivo,Aineq,bineq,Aeq,beq,lb,ub,[],opts);
@@ -428,8 +428,8 @@ end
 % xlim([0 23]);
 % title('Fevereiro','FontSize',14);
 % hold off
-% legend('Produção de Hidrogênio','Injeção na Rede de Gás Natural','Armazenamento');
-%% Março
+% legend('ProduÃ§Ã£o de HidrogÃªnio','InjeÃ§Ã£o na Rede de GÃ¡s Natural','Armazenamento');
+%% MarÃ§o
 
 beq((N*T+2:(N*T)+25),1) = min(capProducaoRestricao,Marco'); 
 [solution, fval_Marco,exitflag_Marco,output] = linprog(funcaoObjetivo,Aineq,bineq,Aeq,beq,lb,ub,[],opts);
@@ -480,7 +480,7 @@ end
 % xlim([0 23]);
 % title('Marco','FontSize',14);
 % hold off
-% legend('Produção de Hidrogênio','Injeção na Rede de Gás Natural','Armazenamento');
+% legend('ProduÃ§Ã£o de HidrogÃªnio','InjeÃ§Ã£o na Rede de GÃ¡s Natural','Armazenamento');
 %% Abril
 
 beq((N*T+2:(N*T)+25),1) = min(capProducaoRestricao,Abril'); 
@@ -532,7 +532,7 @@ end
 % xlim([0 23]);
 % title('Abril','FontSize',14);
 % hold off
-% legend('Produção de Hidrogênio','Injeção na Rede de Gás Natural','Armazenamento');
+% legend('ProduÃ§Ã£o de HidrogÃªnio','InjeÃ§Ã£o na Rede de GÃ¡s Natural','Armazenamento');
 %% Maio
 % 
 beq((N*T+2:(N*T)+25),1) = min(capProducaoRestricao,Maio'); 
@@ -585,7 +585,7 @@ end
 % xlim([0 23]);
 % title('Maio','FontSize',14);
 % hold off
-% legend('Produção de Hidrogênio','Injeção na Rede de Gás Natural','Armazenamento');
+% legend('ProduÃ§Ã£o de HidrogÃªnio','InjeÃ§Ã£o na Rede de GÃ¡s Natural','Armazenamento');
 %% Junho
 
 beq((N*T+2:(N*T)+25),1) = min(capProducaoRestricao,Junho'); 
@@ -632,7 +632,7 @@ end
 % xlim([0 23]);
 % title('Junho','FontSize',14);
 % hold off
-% legend('Produção de Hidrogênio','Injeção na Rede de Gás Natural','Armazenamento');
+% legend('ProduÃ§Ã£o de HidrogÃªnio','InjeÃ§Ã£o na Rede de GÃ¡s Natural','Armazenamento');
 %% Julho
 
 beq((N*T+2:(N*T)+25),1) = min(capProducaoRestricao,Julho'); 
@@ -684,7 +684,7 @@ end
 % xlim([0 23]);
 % title('Julho','FontSize',14);
 % hold off
-% legend('Produção de Hidrogênio','Injeção na Rede de Gás Natural','Armazenamento');
+% legend('ProduÃ§Ã£o de HidrogÃªnio','InjeÃ§Ã£o na Rede de GÃ¡s Natural','Armazenamento');
 %% Agosto
 
 beq((N*T+2:(N*T)+25),1) = min(capProducaoRestricao,Agosto'); 
@@ -737,7 +737,7 @@ end
 % xlim([0 23]);
 % title('Agosto','FontSize',14);
 % hold off
-% legend('Produção de Hidrogênio','Injeção na Rede de Gás Natural','Armazenamento');
+% legend('ProduÃ§Ã£o de HidrogÃªnio','InjeÃ§Ã£o na Rede de GÃ¡s Natural','Armazenamento');
 %% Setembro 
 
 beq((N*T+2:(N*T)+25),1) = min(capProducaoRestricao,Setembro'); 
@@ -790,7 +790,7 @@ end
 % xlim([0 23]);
 % title('Setembro','FontSize',14);
 % hold off
-% legend('Produção de Hidrogênio','Injeção na Rede de Gás Natural','Armazenamento');
+% legend('ProduÃ§Ã£o de HidrogÃªnio','InjeÃ§Ã£o na Rede de GÃ¡s Natural','Armazenamento');
 %% Outubro
 
 beq((N*T+2:(N*T)+25),1) = min(capProducaoRestricao,Outubro'); 
@@ -842,7 +842,7 @@ end
 % xlim([0 23]);
 % title('Outubro','FontSize',14);
 % hold off
-% legend('Produção de Hidrogênio','Injeção na Rede de Gás Natural','Armazenamento');
+% legend('ProduÃ§Ã£o de HidrogÃªnio','InjeÃ§Ã£o na Rede de GÃ¡s Natural','Armazenamento');
 %% Novembro
 
 beq((N*T+2:(N*T)+25),1) = min(capProducaoRestricao,Novembro'); 
@@ -893,7 +893,7 @@ end
 % xlim([0 23]);
 % title('Novembro','FontSize',14);
 % hold off
-% legend('Produção de Hidrogênio','Injeção na Rede de Gás Natural','Armazenamento');
+% legend('ProduÃ§Ã£o de HidrogÃªnio','InjeÃ§Ã£o na Rede de GÃ¡s Natural','Armazenamento');
 
 %% Dezembro
 
@@ -940,9 +940,9 @@ somatorioInjecao = solution(49:72);
 % xlim([0 23]);
 % title('Dezembro','FontSize',14);
 % hold off
-% legend('Produção de Hidrogênio','Injeção na Rede de Gás Natural','Armazenamento');
+% legend('ProduÃ§Ã£o de HidrogÃªnio','InjeÃ§Ã£o na Rede de GÃ¡s Natural','Armazenamento');
 
-%% Resultados Finais e Retorno de Valor da Função
+%% Resultados Finais e Retorno de Valor da FunÃ§Ã£o
 
 exitflag = [exitflag_Janeiro exitflag_Fevereiro exitflag_Marco ...
     exitflag_Abril exitflag_Maio exitflag_Junho exitflag_Julho ...
@@ -969,22 +969,22 @@ fval = 30*[fval_Janeiro fval_Fevereiro fval_Marco ...
     fval_Agosto fval_Setembro fval_Outubro ...
     fval_Novembro fval_Dezembro];
 
-% x é a capacidade instada, z é a energia disponibilizada e g é a
-% eficiência, h é o custo da eletricidade
-%%%%%%DEFINIÇÃO DOS PARÂMETROS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%t=1:1:288;                             %período 12 meses x 24 horas
+% x Ã© a capacidade instada, z Ã© a energia disponibilizada e g Ã© a
+% eficiÃªncia, h Ã© o custo da eletricidade
+%%%%%%DEFINIÃ‡ÃƒO DOS PARÃ‚METROS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%t=1:1:288;                             %perÃ­odo 12 meses x 24 horas
 CO_ELETROLISE = 900000;                 %Custo Overnight (US$/MW)
 CO_ARMAZENAMENTO = 116304;              %Custo Overnight Compressor(US$/MW)  
 r=0.1;                                  %Taxa de desconto anual
-OM_ELETROLISE=0.04*CO_ELETROLISE;       %Operação&Manutenção fixo
+OM_ELETROLISE=0.04*CO_ELETROLISE;       %OperaÃ§Ã£o&ManutenÃ§Ã£o fixo
 OM_ARMAZENAMENTO=0.04*CO_ARMAZENAMENTO;
 OC=0;                                   %Outros custos
-beta=0;                                 %Demanda de água (m3/kgH2)
-CA=0;                                   %Custo da água (m3/kgH2)
-lambda=8;                               %Quantidade de oxigênio por kg de hidrogênio (kgO2/kgH2)
-PO=0;                                   %Preço de venda do oxigênio (US$/tonelada)
+beta=0;                                 %Demanda de Ã¡gua (m3/kgH2)
+CA=0;                                   %Custo da Ã¡gua (m3/kgH2)
+lambda=8;                               %Quantidade de oxigÃªnio por kg de hidrogÃªnio (kgO2/kgH2)
+PO=0;                                   %PreÃ§o de venda do oxigÃªnio (US$/tonelada)
 TV=30;                                  %Tempo de vida do empreendimento (anos)
-FRC=(r*(1+r)^TV)/((r+1)^TV-1);          %Fator de recuperação do capital
+FRC=(r*(1+r)^TV)/((r+1)^TV-1);          %Fator de recuperaÃ§Ã£o do capital
 
 %%%%%%%%%CUSTOS FIXOS + CUSTOS VARIAVEIS DE OPERACAO (MIP)
 CUSTO_FIXO = (capProducao*CO_ELETROLISE*FRC+20*capProducao*OM_ELETROLISE+OC) + ...
