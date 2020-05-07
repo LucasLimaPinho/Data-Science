@@ -38,14 +38,14 @@ for (i in 1:length(tempSolar)){
   names(Solar)[i+1] <- gsub(".csv","",tempSolar[i])
 }
 
-###OBTENCAO DA MATRIZ DE CORRELAÇÃO. A FUNÇÃO CORRPLOT PLOTA O CORRELOGRAMA
+###OBTENCAO DA MATRIZ DE CORRELAÃ‡ÃƒO. A FUNÃ‡ÃƒO CORRPLOT PLOTA O CORRELOGRAMA
 Total <- data.frame(Eolica,Solar[,-1])
 
 
 for (i in 5:length(Total)){
   Total[i] <- ts(Total[i],frequency=8760,start=c(2016,1))
 }
-##OBTENÇÃO DOS PERFIS HORARIOS
+##OBTENÃ‡ÃƒO DOS PERFIS HORARIOS
 #PerfilHorario2 <- matrix(NA,nrow=12*24,ncol=length(Total2)+2)
 #PerfilHorario2[,1] <- gl(12,24)
 #aux <- 0:23
@@ -65,11 +65,11 @@ for (i in 5:length(Total)){
  # aux <- 1
 #}
 
-##OBTENÇÃO DO PERFIL HORÁRIO MODO ALTERNATIVO
+##OBTENÃ‡ÃƒO DO PERFIL HORÃRIO MODO ALTERNATIVO
 
 
 Hora <- rep.int(0:23,12)
-aux <- c("Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto",
+aux <- c("Janeiro","Fevereiro","MarÃ§o","Abril","Maio","Junho","Julho","Agosto",
            "Setembro","Outubro","Novembro","Dezembro")
 Meses <- gl(12,24,labels=aux)
 PerfilHorario <- data.frame(Meses,Hora)
@@ -90,7 +90,7 @@ colnames(PerfilHorario) <- c("Mes","Hora",tempEol,tempSolar)
 
 
      
-##OBTENÇÃO DAS MÉDIAS MENSAIS, PERFIL ANUAL CAPTURANDO SAZONALIDE
+##OBTENÃ‡ÃƒO DAS MÃ‰DIAS MENSAIS, PERFIL ANUAL CAPTURANDO SAZONALIDE
 
 PerfilAnual <- data.frame(aux)
 temp2<-c()
@@ -104,7 +104,7 @@ for (j in 5:length(Total)){
 }
 colnames(PerfilAnual) <- c("Meses",tempEol,tempSolar)
 
-##Variação Inter-Anual da Geração Eólica! Fatores de Capacidade médios para cada Ano
+##VariaÃ§Ã£o Inter-Anual da GeraÃ§Ã£o EÃ³lica! Fatores de Capacidade mÃ©dios para cada Ano
 
 Anos <- 2016:2030
 VarInterAnual <- data.frame(Anos)
@@ -120,7 +120,7 @@ for (j in 5:length(Total)){
 
 colnames(VarInterAnual) <- c("Anos",tempEol,tempSolar)
 
-#Variação da Geração Mensal ao Longo dos Anos
+#VariaÃ§Ã£o da GeraÃ§Ã£o Mensal ao Longo dos Anos
 
 Meses2 <- gl(12,15,labels=aux)
 VarMensInterAnual <- data.frame(Meses2,Anos)
@@ -184,7 +184,7 @@ write.xlsx((tempSolar), file = "CapacidadeSolar2.xlsx")
 
 ##############################################################################################
 
-##Importando as capacidades instaláveis
+##Importando as capacidades instalÃ¡veis
 setwd("C:/Users/Francisco/Desktop/BID")
 Cap_Eolica <- read.csv("CapacidadeEolica.csv",header = FALSE)
 Eolica_Cap <- data.frame(Eolica$Ano,Eolica$Mes,Eolica$Dia,Eolica$Hora)
@@ -207,7 +207,7 @@ colnames(Solar_Cap) <- c(tempSolar)
 Total_Cap <- data.frame(Eolica_Cap,Solar_Cap)
 
 
-##Aglutinacao de áreas por energia para eólica
+##Aglutinacao de Ã¡reas por energia para eÃ³lica
 
 temp2AR <- c()
 temp2BO<- c()
@@ -476,11 +476,11 @@ for (i in 1:131496){
 
 #############################################################################
 
-##OBTENÇÃO DO PERFIL HORÁRIO MODO ALTERNATIVO
+##OBTENÃ‡ÃƒO DO PERFIL HORÃRIO MODO ALTERNATIVO
 
 
 Hora <- rep.int(0:23,12)
-aux <- c("Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto",
+aux <- c("Janeiro","Fevereiro","MarÃ§o","Abril","Maio","Junho","Julho","Agosto",
          "Setembro","Outubro","Novembro","Dezembro")
 Meses <- gl(12,24,labels=aux)
 PerfilHorario.Area <- data.frame(Meses,Hora)
@@ -501,7 +501,7 @@ colnames(PerfilHorario.Area) <- c("Mes","Hora",colunas)
 
 
 
-##OBTENÇÃO DAS MÉDIAS MENSAIS, PERFIL ANUAL CAPTURANDO SAZONALIDE
+##OBTENÃ‡ÃƒO DAS MÃ‰DIAS MENSAIS, PERFIL ANUAL CAPTURANDO SAZONALIDE
 
 PerfilAnual.Area <- data.frame(aux)
 temp2<-c()
@@ -515,7 +515,7 @@ for (j in 5:length(Total.Cap.Area)){
 }
 colnames(PerfilAnual.Area) <- c("Meses",colunas)
 
-##Variação Inter-Anual da Geração Eólica! Fatores de Capacidade médios para cada Ano
+##VariaÃ§Ã£o Inter-Anual da GeraÃ§Ã£o EÃ³lica! Fatores de Capacidade mÃ©dios para cada Ano
 
 Anos <- 2016:2030
 VarInterAnual.Area <- data.frame(Anos)
@@ -531,7 +531,7 @@ for (j in 5:length(Total.Cap.Area)){
 
 colnames(VarInterAnual.Area) <- c("Anos",colunas)
 
-#Variação da Geração Mensal ao Longo dos Anos
+#VariaÃ§Ã£o da GeraÃ§Ã£o Mensal ao Longo dos Anos
 
 Meses2 <- gl(12,15,labels=aux)
 VarMensInterAnual.Area <- data.frame(Meses2,Anos)
@@ -676,8 +676,8 @@ write.csv2(matrizCorrelacoes.DesvioPadraoHorario, file ="Matriz_Correlacoes_DP.c
 write.csv2(matrizCorrelacoes.MedianaHoraria, file ="Matriz_Correlacoes_Mediana.csv")
 
 ### PARTE DO SCRIPT PARA COLOCAR AS 15 AMOSTRAS DE CADA HORA EM ORDEM PARA CADA PLANILHA. FACILITA
-## A VIZUALICAO E CÁLCULO DE DESVIO PADRÃO, MÉDIA E TESTE DE ADERÊNCIA DE KOLMOGOROV-SMIRNOV (ESTE TESTE PODERIA SER
-## FEITO DIRETAMENTE DO LAÇO ACIMA, PORÉM ESTA FORMA É PARA FACILITAR VISUALIZAÇÃO)
+## A VIZUALICAO E CÃLCULO DE DESVIO PADRÃƒO, MÃ‰DIA E TESTE DE ADERÃŠNCIA DE KOLMOGOROV-SMIRNOV (ESTE TESTE PODERIA SER
+## FEITO DIRETAMENTE DO LAÃ‡O ACIMA, PORÃ‰M ESTA FORMA Ã‰ PARA FACILITAR VISUALIZAÃ‡ÃƒO)
 
 AmostrasHorarias <- data.frame(rep(Anos,8760),gl(8760,15,labels=horasAno))
 
