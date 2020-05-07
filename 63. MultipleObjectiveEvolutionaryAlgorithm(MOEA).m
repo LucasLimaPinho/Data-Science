@@ -1,9 +1,9 @@
-%Scrip principal, chamada do Algortimo GenÈtico para resoluÁ„o do problema
+%Scrip principal, chamada do Algortimo Gen√©tico para resolu√ß√£o do problema
 %multi objetivo
 clc
 clear
 
-cd ('C:\Users\Francisco\Documents\MESTRADO PPE\DISSERTA«√O\Planilhas\PDE 2024\MATLAB');
+cd ('C:\Users\Francisco\Documents\MESTRADO PPE\DISSERTA√á√ÉO\Planilhas\PDE 2024\MATLAB');
 fitness = @INJECAO_MOEA_01;
 populationSize = 100;
 stallGenLimit = 200;
@@ -39,9 +39,9 @@ toc
 fh1 = figure;
 scatter(fval(:, 1), fval(:, 2), 'fill');
 hold all
-xlabel ('Custo Nivelado de ProduÁ„o ($/kgH2)');
+xlabel ('Custo Nivelado de Produ√ß√£o ($/kgH2)');
 ylabel ('Curtailment (GWh)');
 grid on;
 title('Fronteira de Pareto');
 
-save('C:/Users/Francisco/Documents/MESTRADO PPE/DISSERTA«√O/Planilhas/PDE 2024/MATLAB/Resultados/RESULTADO.mat')
+save('C:/Users/Francisco/Documents/MESTRADO PPE/DISSERTA√á√ÉO/Planilhas/PDE 2024/MATLAB/Resultados/RESULTADO.mat')
