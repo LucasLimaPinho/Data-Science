@@ -1,6 +1,6 @@
-#install.packages("RPostgreSQL")
+install.packages("RPostgreSQL")
 library("RPostgreSQL")
-conexao = dbConnect("PostgreSQL", dbname="CD", host="localhost", port=5432,
+conexao = dbConnect("PostgreSQL", dbname="DataScience", host="localhost", port=5432,
                     user="postgres", password=123456)
 
 sql = " SELECT QUANTIDADE, VALORTOTAL, PRODUTO, TOTAL FROM ITENSVENDA  IV
