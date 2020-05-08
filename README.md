@@ -14,18 +14,18 @@ Programs based on principles of Data Science:
 10. Text Mining
 11. Visualization, Graphics and Dashboards
 
+My LinkedIn: https://www.linkedin.com/in/lucaslimapinho/
 
 Languages/Softwares used: R, Python, MATLAB, PostgreSQL, MongoDB.
 
-A lot of these programs were built during watching the AMAZING classes from:
+
+Referencies:
 
 Formação Cientista de Dados com R e Python (Udemy): https://www.udemy.com/share/101XysAkUZdFdWRnw=/
 
-Instructors: Fernando Amaral and Jonas Granatyr: https://www.udemy.com/course/cientista-de-dados/#instructor-1
+RICARDO LINDEN.PhD - Evolutionary ALgorithms :https://www.algoritmosgeneticos.com.br/
 
-Genetic Algortihms programs wouldn't be possible without RICARDO LINDEN.PhD:https://www.algoritmosgeneticos.com.br/
 
-My LinkedIn: https://www.linkedin.com/in/lucaslimapinho/
 
 
 
