@@ -6,10 +6,10 @@
 
 import numpy as np
 
-u = np.exp(v)
-u = np.log(v)
-u = np.abs(v)
-u = np.maximum(v,0)
+#u = np.exp(v)
+#u = np.log(v)
+#u = np.abs(v)
+#u = np.maximum(v,0)
 
 # VECTORIZATION OF LOGISTIC REGRESSION (not using explicit for loop), FORWARD PROPAGATION
 
