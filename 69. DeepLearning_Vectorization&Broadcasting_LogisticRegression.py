@@ -92,6 +92,8 @@ print(b.shape)
 print(b.T)
 print(np.dot(b,b.T))
 
+a = a.reshape(5,1)
+assert(a.shape==(5,1))
 
 
 
