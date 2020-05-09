@@ -6,7 +6,7 @@
 
 import numpy as np
 
-#u = np.exp(v)
+#u = np.exp(v) ----> sigmoid function on numpy
 #u = np.log(v)
 #u = np.abs(v)
 #u = np.maximum(v,0)
